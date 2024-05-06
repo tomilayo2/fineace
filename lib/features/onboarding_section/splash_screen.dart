@@ -1,5 +1,7 @@
-import 'package:fineace/features/onboarding_session/onboarding_screen.dart';
+import 'package:fineace/constants/app_color.dart';
+import 'package:fineace/features/onboarding_section/onboarding_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -11,21 +13,23 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-        Future.delayed(Duration(seconds: 3),(){
+        Future.delayed(const Duration(seconds: 3),(){
           Navigator.push(
               context,
-            MaterialPageRoute(builder: (context) => OnboardingScreen())
+            MaterialPageRoute(builder: (context) => const OnboardingScreen())
           );
         });
     super.initState();
   }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFF450D),
+      backgroundColor: AppColor.appPrimaryColor,
       body: Center(
         child: Text(
             "Fineace",
-          style: TextStyle(
+          style: GoogleFonts.urbanist(
             fontSize: 40,
             fontWeight: FontWeight.bold,
             color: Colors.white
