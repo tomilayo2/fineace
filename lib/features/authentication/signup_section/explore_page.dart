@@ -5,10 +5,13 @@ import 'package:google_fonts/google_fonts.dart';
 class ExplorePage extends StatelessWidget {
   const ExplorePage({super.key});
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+      ),
       body: Center(
         child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -32,9 +35,9 @@ class ExplorePage extends StatelessWidget {
             ),
             const SizedBox(height: 10,),
             Text(
-              "Congratulation!, Your account has been verified successfully",
+              "Congratulation!, Your account has been \nverified successfully",
               style: GoogleFonts.urbanist(
-                  fontSize: 20,
+                  fontSize: 14,
                   color: Colors.black54
               ),
               textAlign: TextAlign.center,

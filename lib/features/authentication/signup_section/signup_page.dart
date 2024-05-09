@@ -1,6 +1,6 @@
-import 'package:fineace/features/Authentication/signup_section/custom_button.dart';
-import 'package:fineace/features/Authentication/signup_section/custom_textfield.dart';
-import 'package:fineace/features/Authentication/signup_section/verification_page.dart';
+import 'package:fineace/features/authentication/signup_section/custom_textfield.dart';
+import 'package:fineace/features/authentication/signup_section/verification_page.dart';
+import 'package:fineace/features/authentication/components/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -40,7 +40,7 @@ class _SignUpPageState extends State<SignUpPage> {
               Text(
                   "Fineace",
                 style: GoogleFonts.urbanist(
-                    fontSize: 25,
+                    fontSize: 32,
                     fontWeight: FontWeight.bold,
                     color: AppColor.appPrimaryColor
                 ),
@@ -89,26 +89,29 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
               Row(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10.0),
-                    child: Transform.scale(
-                      scale: 1.1,
-                      child: Checkbox(
-                        value: _isChecked,
-                        onChanged: (bool? newValue){
-                          setState(() {
-                            _isChecked = newValue!;
-                          });
-                        },
-                        activeColor: Colors.white,
-                        checkColor: AppColor.appPrimaryColor,
-                        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        side: BorderSide(
-                          color: Colors.white,
-                          width: 3
-                        )
-                        // shape: BeveledRectangleBorder(borderRadius: BorderRadius.zero),
+                  Container(
+                    width: 24.0,
+                    height: 24.0,
+                    margin: const EdgeInsets.only(left: 20.0, right: 10.0),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                          color: Colors.grey.shade500,
+                          width: 2.0,
                       ),
+                      borderRadius: BorderRadius.circular(7.0),
+                    ),
+                    child: Checkbox(
+                      value: _isChecked,
+                      onChanged: (bool? newValue){
+                        setState(() {
+                          _isChecked = newValue!;
+                        });
+                      },
+                      activeColor: Colors.transparent,
+                      focusColor: Colors.white,
+                      checkColor: AppColor.appPrimaryColor,
+                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      side: BorderSide.none,
                     ),
                   ),
                   RichText(

@@ -13,7 +13,7 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 350,
       height: 48,
       child: ElevatedButton(
@@ -24,7 +24,7 @@ class CustomButton extends StatelessWidget {
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0))
           ),
           child: Container(
-            padding: EdgeInsets.only(left: 50),
+            padding: const EdgeInsets.only(left: 50),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
