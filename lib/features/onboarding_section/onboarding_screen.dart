@@ -1,21 +1,30 @@
-import 'package:fineace/features/onboarding_session/onboarding_screen_one.dart';
+import 'package:fineace/features/onboarding_section/onboarding_page_item.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingScreen extends StatefulWidget {
-   OnboardingScreen({super.key});
+   const OnboardingScreen({super.key});
 
   @override
   State<OnboardingScreen> createState() => _OnboardingScreenState();
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
-  //final _controller = PageController();
   PageController pageController = PageController();
+  int _currentPage = 0;
+
+  @override
+  void dispose() {
+    pageController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: _currentPage > 0,
           actions: [
             SafeArea(
               child: TextButton(
@@ -24,12 +33,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     children: [
                       Text(
                           "Skip",
-                        style: TextStyle(
+                        style: GoogleFonts.urbanist(
                           color: Colors.deepOrange.shade500,
-                          fontSize: 20
+                          fontSize: 16
                         ),
                       ),
-                      SizedBox(width: 5,),
+                      const SizedBox(width: 5,),
                       Icon(
                         Icons.arrow_forward_ios,
                         color: Colors.deepOrange.shade500,
@@ -46,18 +55,24 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         children: [
           PageView(
             controller: pageController,
+            onPageChanged: (index) {
+              setState(() {
+                _currentPage = index;
+                print('Current page: $_currentPage');
+              });
+            },
             children: [
-              OnboardingScreenOne(
+              OnboardingPageItem(
                 image: 'assets/images/image_one.png',
                 title: 'Savings Management',
-                subtitle: 'Track your savings and build the habits saving money',
+                subtitle: 'Track your savings and build the \nhabits saving money',
               ),
-              OnboardingScreenOne(
+              OnboardingPageItem(
                 image: 'assets/images/image_two.png',
                 title: 'Make Payment Easier',
                 subtitle: 'Find new opportunities to make your life better',
               ),
-              OnboardingScreenOne(
+              OnboardingPageItem(
                 image: 'assets/images/image_three.png',
                 title: 'Grow Up Your Money',
                 subtitle: 'Make Investment choice to grow your money',
@@ -65,14 +80,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ],
           ),
           Container(
-            alignment: Alignment(0, 0.5),
+            alignment: const Alignment(0, 0.5),
             child: SmoothPageIndicator(
                 controller: pageController,
                 count: 3,
               effect: ExpandingDotsEffect(
                 activeDotColor: Colors.deepOrange.shade500,
                 dotColor: Colors.grey,
-                dotHeight: 8,
+                dotHeight: 4,
                 dotWidth: 10,
                 spacing: 8,
               ),
